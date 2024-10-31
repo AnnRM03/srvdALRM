@@ -18,12 +18,10 @@ ejecutaServicio(function () {
         $usuario = htmlentities($modelo[ADMIN_USUARIO]);
         
         $render .=
-            "<li>
+            "<dl>
                 <dt><a href='modifica.html?id=$id'>$nombre</a></dt>
                 <dd>Usuario: $usuario</dd>
-                <button onclick=\"location.href='modifica.html?id=$id'\">Modificar</button>
-                <button onclick=\"eliminarAdministrador('$id')\">Eliminar</button>
-            </li>";
+            </dl>";
     }
 
     devuelveJson(["lista" => ["innerHTML" => $render]]);
