@@ -9,11 +9,6 @@ require_once __DIR__ . "/TABLA_ADMINISTRADOR.php";
 
 ejecutaServicio(function () {
     $id = recuperaIdEntero("id");
-    $pdo = Bd::pdo();
-
-    // Preparar y ejecutar la sentencia de eliminación
-    $stmt = $pdo->prepare("DELETE FROM " . ADMINISTRADOR . " WHERE " . ADMIN_ID . " = :id");
-    $stmt->execute(['id' => $id]);
-
+    delete(pdo: Bd::pdo(), from: ADMINISTRADOR, where: [ADMIN_ID => $id]);
     devuelveNoContent();
 });
