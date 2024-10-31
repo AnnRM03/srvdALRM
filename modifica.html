@@ -41,7 +41,20 @@
     </p>
 
     <p>* Obligatorio</p>
+
+    <p>
     <p><button type="submit">Guardar cambios</button></p>
+    <button type="button" onclick="
+    if (params && confirm('Confirma la eliminación')) {
+        consumeJson('srv/administrador_elimina.php?' + params)
+        .then(() => location.href = 'index.html')
+        .catch(muestraError)
+    }">
+    Eliminar
+</button>
+
+
+  </p>
   </form>
 
 </body>
@@ -54,6 +67,7 @@
     const id = urlParams.get("id");
 
     if (id) {
+        window.params = `id=${id}`;
       fetch(`srv/administrador.php?id=${id}`)
         .then(response => response.json())
         .then(data => {
@@ -66,6 +80,4 @@
         .catch(error => console.error("Error al cargar los datos del administrador:", error));
     }
   });
-</script>
-
 </script>
